@@ -1,0 +1,33 @@
+{
+  "name": "MyPDF-Manager",
+  "version": "1.0.0",
+  "created": "2026-03-28",
+  "description": "PDF处理工具集，支持转换、合并、拆分、压缩、文字提取、OCR识别",
+  "tools": {
+    "pdftoppm": "PDF转图片",
+    "pdftotext": "PDF文字提取",
+    "pdfunite": "PDF合并",
+    "pdfseparate": "PDF拆分",
+    "gs": "PDF压缩",
+    "tesseract": "OCR识别",
+    "convert": "图片转换"
+  },
+  "scripts": {
+    "pdf_split.sh": "PDF拆分脚本",
+    "pdf_merge.sh": "PDF合并脚本",
+    "pdf_compress.sh": "PDF压缩脚本",
+    "ocr_recognize.sh": "OCR识别脚本"
+  },
+  "dependencies": {
+    "required": [
+      "poppler-utils",
+      "tesseract-ocr",
+      "ghostscript",
+      "imagemagick"
+    ],
+    "optional": [
+      "tesseract-ocr-chi-sim",
+      "tesseract-ocr-eng"
+    ]
+  }
+}
