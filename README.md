@@ -20,6 +20,8 @@ MyPDF-Manager 是一个为 OpenClaw 设计的 PDF 处理技能，让你可以通
 - 🗜️ **PDF 压缩** - 减小文件体积
 - 🔍 **OCR 识别** - 识别扫描文档中的文字
 - 🖼️ **图片转 PDF** - 多图合并为 PDF
+- ✨ **PDF ↔ Word** - 双向转换（新增）
+- ✨ **PDF ↔ Excel** - 双向转换（新增）
 
 ## ✨ 特性
 
@@ -84,6 +86,34 @@ OCR 这个 PDF
 把这些图片转成 PDF
 合并图片为 PDF
 把多张图片合成一个 PDF
+```
+
+**PDF 转 Word**（新增）：
+```
+把这个 PDF 转成 Word
+我需要编辑这个 PDF，转成 docx
+PDF 转 Word 文档
+```
+
+**Word 转 PDF**（新增）：
+```
+把 Word 转成 PDF
+docx 转 PDF
+Word 文档转 PDF
+```
+
+**PDF 转 Excel**（新增）：
+```
+把这个 PDF 表格转成 Excel
+提取 PDF 里的表格数据
+PDF 转 xlsx
+```
+
+**Excel 转 PDF**（新增）：
+```
+把 Excel 转成 PDF
+xlsx 转 PDF
+Excel 表格转 PDF
 ```
 
 **批量处理**：
@@ -216,6 +246,30 @@ MyPDF-Manager/
 2. 生成新的 PDF
 3. 返回给你
 
+### 场景 5：PDF 转 Word 编辑
+
+**用户说**：
+```
+这个 PDF 需要编辑，转成 Word 给我
+```
+
+**AI 会**：
+1. 使用 pdf2docx 转换
+2. 保留格式、表格、图片
+3. 返回 .docx 文件
+
+### 场景 6：PDF 表格转 Excel
+
+**用户说**：
+```
+这个 PDF 里有表格，转成 Excel 我要处理数据
+```
+
+**AI 会**：
+1. 提取 PDF 中的表格
+2. 转换为 Excel 格式
+3. 返回 .xlsx 文件
+
 ## 🔧 底层工具（高级用户）
 
 MyPDF-Manager 基于以下开源工具：
@@ -229,6 +283,9 @@ MyPDF-Manager 基于以下开源工具：
 | **ghostscript** | PDF 压缩 |
 | **tesseract** | OCR 识别 |
 | **imagemagick** | 图片转换 |
+| **pdf2docx** | PDF 转 Word ✨ |
+| **pdfplumber** | PDF 转 Excel ✨ |
+| **LibreOffice** | Word/Excel 转 PDF ✨ |
 
 ### 命令行使用
 
@@ -250,8 +307,15 @@ MyPDF-Manager 基于以下开源工具：
 ## 📋 依赖安装验证
 
 ```bash
-# 检查所有工具是否安装成功
+# 检查核心工具
 which pdftoppm pdftotext pdfunite pdfseparate tesseract gs convert
+
+# 检查格式转换工具（新增）
+python3 -c "import pdf2docx; print('pdf2docx:', pdf2docx.__version__)"
+python3 -c "import pdfplumber; print('pdfplumber:', pdfplumber.__version__)"
+
+# 检查 LibreOffice（可选，用于 Word/Excel 转 PDF）
+which libreoffice soffice
 
 # 查看版本
 pdftotext -v

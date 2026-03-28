@@ -1,8 +1,9 @@
 {
   "name": "MyPDF-Manager",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "created": "2026-03-28",
-  "description": "PDF处理工具集，支持转换、合并、拆分、压缩、文字提取、OCR识别",
+  "updated": "2026-03-29",
+  "description": "PDF智能处理工具集，支持格式转换、合并、拆分、压缩、文字提取、OCR识别",
   "tools": {
     "pdftoppm": "PDF转图片",
     "pdftotext": "PDF文字提取",
@@ -10,24 +11,50 @@
     "pdfseparate": "PDF拆分",
     "gs": "PDF压缩",
     "tesseract": "OCR识别",
-    "convert": "图片转换"
+    "convert": "图片转换",
+    "pdf2docx": "PDF转Word",
+    "pdfplumber": "PDF转Excel",
+    "libreoffice": "Word/Excel转PDF"
   },
   "scripts": {
     "pdf_split.sh": "PDF拆分脚本",
     "pdf_merge.sh": "PDF合并脚本",
     "pdf_compress.sh": "PDF压缩脚本",
-    "ocr_recognize.sh": "OCR识别脚本"
+    "ocr_recognize.sh": "OCR识别脚本",
+    "pdf_to_word.sh": "PDF转Word脚本",
+    "word_to_pdf.sh": "Word转PDF脚本",
+    "pdf_to_excel.py": "PDF转Excel脚本",
+    "excel_to_pdf.sh": "Excel转PDF脚本"
   },
   "dependencies": {
     "required": [
       "poppler-utils",
       "tesseract-ocr",
       "ghostscript",
-      "imagemagick"
+      "imagemagick",
+      "pdf2docx",
+      "pdfplumber"
     ],
     "optional": [
       "tesseract-ocr-chi-sim",
-      "tesseract-ocr-eng"
+      "tesseract-ocr-eng",
+      "libreoffice-writer",
+      "libreoffice-calc"
+    ]
+  },
+  "changelog": {
+    "v1.1.0": [
+      "新增 PDF 转 Word 功能",
+      "新增 Word 转 PDF 功能",
+      "新增 PDF 转 Excel 功能",
+      "新增 Excel 转 PDF 功能",
+      "更新文档，添加格式转换说明"
+    ],
+    "v1.0.0": [
+      "初始版本",
+      "支持 PDF 转图片、文字提取、合并、拆分、压缩、OCR、图片转 PDF",
+      "包含 4 个可执行脚本",
+      "完整的安装指南和文档"
     ]
   }
 }
