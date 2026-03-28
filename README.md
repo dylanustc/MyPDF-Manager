@@ -243,5 +243,3 @@ apt-cache search tesseract-ocr
 - [ImageMagick](https://imagemagick.org/) - 图片处理
 
 ---
-
-**Made with ❤️ for OpenClaw**
