@@ -2,10 +2,7 @@
 
 <div align="center">
 
-**PDF 智能处理工具集 - OpenClaw Skill**
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![OpenClaw Skill](https://img.shields.io/badge/OpenClaw-Skill-blue.svg)](https://openclaw.ai)
+**PDF 智能处理工具 - OpenClaw Skill**
 
 </div>
 
@@ -26,15 +23,15 @@ MyPDF-Manager 是一个为 OpenClaw 设计的 PDF 处理技能，让你可以通
 
 ## ✨ 特性
 
-- ✅ **对话式交互** - 用自然语言描述需求，无需命令行
-- ✅ **完全免费** - 基于开源工具，无需付费
-- ✅ **离线使用** - 无需网络，本地处理
-- ✅ **批量处理** - 支持批量操作
-- ✅ **多平台支持** - Ubuntu/Debian、CentOS/RHEL、macOS
-- ✅ **高质量输出** - 支持 300+ DPI
+- ✅ **对话式交互**   - 用自然语言描述需求，无需命令行
+- ✅ **完全免费**    - 基于开源工具，无需付费
+- ✅ **离线使用**    - 无需网络，本地处理
+- ✅ **批量处理**    - 支持批量操作
+- ✅ **多平台支持**  - Ubuntu/Debian、CentOS/RHEL、macOS
+- ✅ **高质量输出**  - 支持 300+ DPI
 - ✅ **多语言 OCR** - 支持中文、英文、日文等 100+ 种语言
 
-## 💬 在 OpenClaw 中使用
+## 💬 在飞书对话中使用
 
 ### 方式一：直接对话（推荐）
 
@@ -119,20 +116,18 @@ MyPDF-Manager 有什么功能？
 ### 方式一：通过 ClawHub 安装（推荐）
 
 ```bash
-cd ~/.openclaw/workspace/skills
 clawhub install MyPDF-Manager
 ```
 
 ### 方式二：从 GitHub 安装
 
 ```bash
-cd ~/.openclaw/workspace/skills
 git clone https://github.com/dylanustc/MyPDF-Manager.git
 ```
 
 ### 方式三：手动安装
 
-1. 下载 [MyPDF-Manager.tar.gz](https://github.com/dylanustc/MyPDF-Manager/archive/refs/heads/main.tar.gz)
+1. 下载 [MyPDF-Manager.tar.gz]
 2. 解压到 `~/.openclaw/workspace/skills/MyPDF-Manager/`
 3. 安装依赖工具：
 
@@ -174,12 +169,12 @@ MyPDF-Manager/
 
 ### 场景 1：扫描文档数字化
 
-**用户说**：
+**User**：
 ```
 这是一个扫描的 PDF，帮我识别文字
 ```
 
-**AI 会**：
+**Openclaw**：
 1. PDF 转图片
 2. OCR 识别每页
 3. 合并文字结果
@@ -187,36 +182,36 @@ MyPDF-Manager/
 
 ### 场景 2：批量处理
 
-**用户说**：
+**User**：
 ```
 这个文件夹有 10 个 PDF，帮我全部提取文字
 ```
 
-**AI 会**：
+**Openclaw**：
 1. 遍历所有 PDF
 2. 批量提取文字
 3. 保存为文本文件
 
 ### 场景 3：PDF 压缩
 
-**用户说**：
+**User**：
 ```
 这个 PDF 太大了，帮我压缩一下
 ```
 
-**AI 会**：
+**Openclaw**：
 1. 检查文件大小
 2. 使用 ebook 质量压缩
 3. 返回压缩后的文件
 
 ### 场景 4：PDF 拆分与合并
 
-**用户说**：
+**User**：
 ```
 这个 PDF 太长，我只想要第 5-10 页
 ```
 
-**AI 会**：
+**Openclaw**：
 1. 提取第 5-10 页
 2. 生成新的 PDF
 3. 返回给你
@@ -252,9 +247,6 @@ MyPDF-Manager 基于以下开源工具：
 # OCR 识别
 ./scripts/ocr_recognize.sh input.pdf output.txt chi_sim
 ```
-
-详细命令行使用请参考 [references/installation-guide.md](references/installation-guide.md)
-
 ## 📋 依赖安装验证
 
 ```bash
@@ -324,7 +316,5 @@ A: 编辑 `/etc/ImageMagick-6/policy.xml`，修改 PDF 权限
 - [OpenClaw](https://openclaw.ai) - AI Agent 平台
 
 ---
-
-**Made with ❤️ for OpenClaw**
 
 **GitHub**: https://github.com/dylanustc/MyPDF-Manager
