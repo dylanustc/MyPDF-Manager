@@ -20,10 +20,10 @@ def add_text_watermark(input_path, output_path, text,
         output_path: 输出 PDF 路径
         text: 水印文字
         fontsize: 字体大小
-        opacity: 透明度 (0-1)
+        opacity: 透明度 (0-1) - 注意：PyMuPDF 免费版不支持透明度
         color: RGB 颜色元组 (0-1)
         position: 位置 (center, diagonal, top-left, top-right, bottom-left, bottom-right)
-        rotation: 旋转角度
+        rotation: 旋转角度（暂不支持）
         pages: 页码列表 (None 表示所有页)
     
     Returns:
@@ -44,9 +44,6 @@ def add_text_watermark(input_path, output_path, text,
             center_x = rect.width / 2
             center_y = rect.height / 2
             
-            # 创建水印文本
-            text_length = fitz.get_text_length(text, fontsize=fontsize)
-            
             # 根据位置设置坐标
             if position == "center":
                 x, y = center_x, center_y
@@ -63,28 +60,29 @@ def add_text_watermark(input_path, output_path, text,
             else:
                 x, y = center_x, center_y
             
-            # 添加水印
+            # 添加水印（直接在页面上插入文本）
+            # 使用居中对齐
             page.insert_text(
-                (x, y),
+                fitz.Point(x, y),
                 text,
                 fontsize=fontsize,
                 color=color,
-                rotate=rotation,
                 overlay=True,
-                render_mode=3,  # 透明模式
             )
             
-            # 设置透明度
-            # 注意：PyMuPDF 的透明度需要通过 shape 实现
-            shape = page.new_shape()
-            shape.insert_text(
-                (x, y),
-                text,
-                fontsize=fontsize,
-                color=color,
-                rotate=rotation,
-            )
-            shape.commit(overlay=True)
+            # 在多个位置添加水印（覆盖整个页面）
+            for row in range(3):
+                for col in range(3):
+                    wx = rect.width * (0.2 + col * 0.3)
+                    wy = rect.height * (0.2 + row * 0.3)
+                    if (wx, wy) != (x, y):  # 避免重复添加
+                        page.insert_text(
+                            fitz.Point(wx, wy),
+                            text,
+                            fontsize=fontsize,
+                            color=color,
+                            overlay=True,
+                        )
         
         doc.save(output_path)
         doc.close()
