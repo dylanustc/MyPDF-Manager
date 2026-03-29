@@ -1,9 +1,9 @@
 {
   "name": "MyPDF-Manager",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "created": "2026-03-28",
   "updated": "2026-03-29",
-  "description": "PDF智能处理工具集，支持格式转换、合并、拆分、压缩、文字提取、OCR识别",
+  "description": "PDF智能处理工具集，支持格式转换、合并、拆分、压缩、文字提取、OCR识别、加密、水印、图片提取",
   "tools": {
     "pdftoppm": "PDF转图片",
     "pdftotext": "PDF文字提取",
@@ -14,7 +14,8 @@
     "convert": "图片转换",
     "pdf2docx": "PDF转Word",
     "pdfplumber": "PDF转Excel",
-    "libreoffice": "Word/Excel转PDF"
+    "libreoffice": "Word/Excel转PDF",
+    "pymupdf": "PDF加密/解密/水印/图片提取"
   },
   "scripts": {
     "pdf_split.sh": "PDF拆分脚本",
@@ -24,7 +25,10 @@
     "pdf_to_word.sh": "PDF转Word脚本",
     "word_to_pdf.sh": "Word转PDF脚本",
     "pdf_to_excel.py": "PDF转Excel脚本",
-    "excel_to_pdf.sh": "Excel转PDF脚本"
+    "excel_to_pdf.sh": "Excel转PDF脚本",
+    "pdf_encrypt.py": "PDF加密/解密脚本",
+    "pdf_watermark.py": "PDF水印脚本",
+    "pdf_extract_images.py": "PDF提取图片脚本"
   },
   "dependencies": {
     "required": [
@@ -33,7 +37,8 @@
       "ghostscript",
       "imagemagick",
       "pdf2docx",
-      "pdfplumber"
+      "pdfplumber",
+      "pymupdf"
     ],
     "optional": [
       "tesseract-ocr-chi-sim",
@@ -43,6 +48,13 @@
     ]
   },
   "changelog": {
+    "v1.2.0": [
+      "新增 PDF 加密功能（设置密码保护）",
+      "新增 PDF 解密功能（移除密码保护）",
+      "新增 PDF 水印功能（文字/图片水印）",
+      "新增 PDF 提取图片功能",
+      "完善文档，添加飞书对话和命令行使用说明"
+    ],
     "v1.1.0": [
       "新增 PDF 转 Word 功能",
       "新增 Word 转 PDF 功能",
