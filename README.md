@@ -248,24 +248,24 @@ MyPDF-Manager/
 
 ### 场景 5：PDF 转 Word 编辑
 
-**用户说**：
+**用户**：
 ```
 这个 PDF 需要编辑，转成 Word 给我
 ```
 
-**AI 会**：
+**Openclaw会**：
 1. 使用 pdf2docx 转换
 2. 保留格式、表格、图片
 3. 返回 .docx 文件
 
 ### 场景 6：PDF 表格转 Excel
 
-**用户说**：
+**用户**：
 ```
 这个 PDF 里有表格，转成 Excel 我要处理数据
 ```
 
-**AI 会**：
+**Openclaw**：
 1. 提取 PDF 中的表格
 2. 转换为 Excel 格式
 3. 返回 .xlsx 文件
@@ -378,7 +378,3 @@ A: 编辑 `/etc/ImageMagick-6/policy.xml`，修改 PDF 权限
 - [Ghostscript](https://www.ghostscript.com/) - PDF 处理
 - [ImageMagick](https://imagemagick.org/) - 图片处理
 - [OpenClaw](https://openclaw.ai) - AI Agent 平台
-
----
-
-**GitHub**: https://github.com/dylanustc/MyPDF-Manager
