@@ -24,6 +24,10 @@ MyPDF-Manager 是一个为 OpenClaw 设计的 PDF 处理技能，让你可以通
 - ✨ **PDF 转 Excel** - 提取表格到 xlsx ✅
 - ✨ **Word 转 PDF** - docx 转 PDF ⚠️ 需安装 LibreOffice
 - ✨ **Excel 转 PDF** - xlsx 转 PDF ⚠️ 需安装 LibreOffice
+- ✨ **PDF 加密** - 设置密码保护 ✅
+- ✨ **PDF 解密** - 移除密码保护 ✅
+- ✨ **PDF 水印** - 添加文字/图片水印 ✅
+- ✨ **PDF 提取图片** - 导出嵌入图片 ✅
 
 ## ✨ 特性
 
@@ -287,6 +291,66 @@ sudo apt-get install -y libreoffice-writer libreoffice-calc
 
 **AI 会**：
 1. 使用 LibreOffice 转换
+2. 返回 .pdf 文件
+
+**注意**：需要先安装 LibreOffice
+```bash
+sudo apt-get install -y libreoffice-writer libreoffice-calc
+```
+
+### 场景 9：PDF 加密保护
+
+**用户说**：
+```
+给这个 PDF 加密，密码是 123456
+设置 PDF 密码保护
+```
+
+**AI 会**：
+1. 使用 PyMuPDF 加密 PDF
+2. 设置用户密码和权限
+3. 返回加密后的 PDF
+
+### 场景 10：PDF 解密
+
+**用户说**：
+```
+解密这个 PDF，密码是 123456
+移除 PDF 密码
+```
+
+**AI 会**：
+1. 使用密码解密 PDF
+2. 生成无密码的 PDF
+3. 返回解密后的文件
+
+### 场景 11：PDF 添加水印
+
+**用户说**：
+```
+给 PDF 加上水印"机密文件"
+添加图片水印到 PDF
+```
+
+**AI 会**：
+1. 使用 PyMuPDF 添加水印
+2. 支持文字/图片水印
+3. 可自定义透明度、位置、角度
+4. 返回带水印的 PDF
+
+### 场景 12：PDF 提取图片
+
+**用户说**：
+```
+从 PDF 中提取所有图片
+导出 PDF 里的图片
+```
+
+**AI 会**：
+1. 扫描 PDF 所有页面
+2. 提取嵌入的图片
+3. 保存为 PNG/JPG 格式
+4. 返回图片列表
 2. 返回 .pdf 文件
 
 **注意**：需要先安装 LibreOffice

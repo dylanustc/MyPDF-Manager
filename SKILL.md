@@ -246,6 +246,152 @@ sudo apt-get install -y libreoffice-calc
 
 ---
 
+### 12. PDF 加密 ✨ 新功能
+
+**💬 飞书对话使用**：
+```
+给这个 PDF 加密，密码是 123456
+帮我把这个 PDF 加上密码保护
+加密这个 PDF 文件，用户密码是 abc123
+给 PDF 设置密码，密码是 123456，禁止打印和复制
+```
+
+**🔧 命令行使用**：
+```bash
+# 基础加密（只设置用户密码）
+python3 scripts/pdf_encrypt.py encrypt input.pdf output.pdf --user-password 123456
+
+# 完整加密（设置用户密码和所有者密码）
+python3 scripts/pdf_encrypt.py encrypt input.pdf output.pdf \
+  --user-password user123 \
+  --owner-password admin456
+
+# 设置权限（允许打印，禁止复制）
+python3 scripts/pdf_encrypt.py encrypt input.pdf output.pdf \
+  --user-password 123456 \
+  --allow-print
+
+# 查看加密信息
+python3 scripts/pdf_encrypt.py info encrypted.pdf
+```
+
+**✅ 效果**：
+- AES-256 加密
+- 设置用户密码（打开需要密码）
+- 设置所有者密码（修改权限）
+- 控制权限（打印、复制、修改）
+
+---
+
+### 13. PDF 解密 ✨ 新功能
+
+**💬 飞书对话使用**：
+```
+解密这个 PDF，密码是 123456
+移除这个 PDF 的密码保护
+帮我把加密的 PDF 解密，密码是 abc123
+```
+
+**🔧 命令行使用**：
+```bash
+# 解密 PDF
+python3 scripts/pdf_encrypt.py decrypt encrypted.pdf decrypted.pdf --password 123456
+```
+
+**✅ 效果**：
+- 移除密码保护
+- 生成无密码 PDF
+- 保留原有内容和格式
+
+**⚠️ 注意**：需要知道原密码
+
+---
+
+### 14. PDF 添加水印 ✨ 新功能
+
+**💬 飞书对话使用**：
+```
+给这个 PDF 加上水印"机密文件"
+添加水印到 PDF，文字是"内部资料"
+给 PDF 加图片水印
+给这个 PDF 加上斜角水印，透明度 50%
+```
+
+**🔧 命令行使用**：
+```bash
+# 添加文字水印（居中，默认透明度 0.3）
+python3 scripts/pdf_watermark.py text input.pdf output.pdf "机密文件"
+
+# 添加文字水印（斜角，透明度 0.5，字体大小 60）
+python3 scripts/pdf_watermark.py text input.pdf output.pdf "机密文件" \
+  --opacity 0.5 \
+  --fontsize 60 \
+  --position diagonal \
+  --rotation 45
+
+# 添加文字水印（指定页码）
+python3 scripts/pdf_watermark.py text input.pdf output.pdf "机密文件" --pages 1,3,5-7
+
+# 添加图片水印
+python3 scripts/pdf_watermark.py image input.pdf output.pdf logo.png \
+  --scale 0.3 \
+  --opacity 0.3
+
+# 添加图片水印（右下角）
+python3 scripts/pdf_watermark.py image input.pdf output.pdf logo.png \
+  --scale 0.2 \
+  --position bottom-right
+```
+
+**✅ 效果**：
+- 文字水印（可自定义字体、颜色、透明度）
+- 图片水印（支持 PNG、JPG）
+- 多种位置（居中、斜角、四角）
+- 支持旋转角度
+- 可指定页码
+
+---
+
+### 15. PDF 提取图片 ✨ 新功能
+
+**💬 飞书对话使用**：
+```
+从 PDF 中提取所有图片
+把 PDF 里的图片导出来
+提取这个 PDF 中的图片资源
+导出 PDF 中嵌入的图片
+```
+
+**🔧 命令行使用**：
+```bash
+# 提取所有图片（到指定目录）
+python3 scripts/pdf_extract_images.py extract input.pdf ./images
+
+# 提取图片，最小尺寸 200x200（过滤小图标）
+python3 scripts/pdf_extract_images.py extract input.pdf ./images --min-size 200
+
+# 提取图片为 JPG 格式
+python3 scripts/pdf_extract_images.py extract input.pdf ./images --format jpg
+
+# 按页面提取图片
+python3 scripts/pdf_extract_images.py by-page input.pdf ./images
+
+# 提取指定页面的图片
+python3 scripts/pdf_extract_images.py by-page input.pdf ./images --pages 1,3,5
+
+# 查看图片信息（不提取）
+python3 scripts/pdf_extract_images.py info input.pdf
+```
+
+**✅ 效果**：
+- 提取所有嵌入图片
+- 按页面分类提取
+- 过滤小图片（避免提取图标等）
+- 支持 PNG/JPG 格式输出
+- 保留原始图片质量
+
+---
+
 ### 批量提取文字
 **用户说**：
 ```
@@ -474,6 +620,13 @@ brew install --cask libreoffice
 ---
 
 ## 📝 版本历史
+
+**v1.2.0** (2026-03-29)
+- ✨ 新增 PDF 加密功能（设置密码保护）
+- ✨ 新增 PDF 解密功能（移除密码保护）
+- ✨ 新增 PDF 水印功能（文字/图片水印）
+- ✨ 新增 PDF 提取图片功能
+- 📝 完善文档，添加飞书对话和命令行使用说明
 
 **v1.1.0** (2026-03-29)
 - ✨ 新增 PDF 转 Word 功能（已安装 pdf2docx）
