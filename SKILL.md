@@ -12,7 +12,8 @@
 - PDF 转图片、PDF 提取文字、PDF 合并、PDF 拆分
 - PDF 压缩、OCR 识别、扫描 PDF
 - 图片转 PDF、批量处理 PDF
-- **PDF 转 Word、PDF 转 Excel、Word 转 PDF、Excel 转 PDF**
+- **PDF 转 Word、PDF 转 Excel** ✅ 已安装
+- **Word 转 PDF、Excel 转 PDF** ⚠️ 需安装 LibreOffice
 
 ---
 
@@ -181,32 +182,7 @@ pdf2docx input.pdf output.docx
 
 ---
 
-### 9. Word 转 PDF ✨ 新功能
-**用户说**：
-```
-把 Word 转成 PDF
-docx 转 PDF
-Word 文档转 PDF
-```
-
-**底层命令**：
-```bash
-# 需要 LibreOffice
-libreoffice --headless --convert-to pdf input.docx
-```
-
-**效果**：⭐⭐⭐⭐⭐ 完美
-- ✅ 排版完全保留
-- ✅ 字体、图片、表格无损
-
-**注意**：需要安装 LibreOffice
-```bash
-sudo apt-get install -y libreoffice-writer
-```
-
----
-
-### 10. PDF 转 Excel ✨ 新功能
+### 9. PDF 转 Excel ✨ 新功能
 **用户说**：
 ```
 把这个 PDF 表格转成 Excel
@@ -222,11 +198,31 @@ python3 scripts/pdf_to_excel.py input.pdf output.xlsx
 **效果**：⭐⭐⭐⭐ 好
 - ✅ 提取文本和表格
 - ✅ 表格识别准确率 80-90%
-- ⚠️ 复杂表格可能需要手动调整
+### 10. Word 转 PDF ⚠️ 需安装 LibreOffice
+**用户说**：
+```
+把 Word 转成 PDF
+docx 转 PDF
+Word 文档转 PDF
+```
+
+**底层命令**：
+```bash
+libreoffice --headless --convert-to pdf input.docx
+```
+
+**效果**：⭐⭐⭐⭐⭐ 完美
+- ✅ 排版完全保留
+- ✅ 字体、图片、表格无损
+
+**注意**：需要安装 LibreOffice
+```bash
+sudo apt-get install -y libreoffice-writer
+```
 
 ---
 
-### 11. Excel 转 PDF ✨ 新功能
+### 11. Excel 转 PDF ⚠️ 需安装 LibreOffice
 **用户说**：
 ```
 把 Excel 转成 PDF
@@ -236,7 +232,6 @@ Excel 表格转 PDF
 
 **底层命令**：
 ```bash
-# 需要 LibreOffice
 libreoffice --headless --convert-to pdf input.xlsx
 ```
 
@@ -410,9 +405,9 @@ AI：
 | tesseract-ocr-chi-sim | - | 中文语言包 | ~2.5 MB |
 | gs | ghostscript | PDF 压缩 | ~24 MB |
 | convert | imagemagick | 图片转换 | ~0.5 MB |
-| **pdf2docx** | Python 库 | **PDF 转 Word** | ~10 MB |
-| **pdfplumber** | Python 库 | **PDF 转 Excel** | ~5 MB |
-| **LibreOffice** | libreoffice | **Word/Excel 转 PDF** | ~300 MB |
+| **pdf2docx** | Python 库 | **PDF 转 Word** | ✅ 已安装 |
+| **pdfplumber** | Python 库 | **PDF 转 Excel** | ✅ 已安装 |
+| **LibreOffice** | libreoffice | **Word/Excel 转 PDF** | ⚠️ 需安装 |
 | **总依赖** | - | - | **~50-70 MB** (不含 LibreOffice) |
 
 ---
@@ -430,10 +425,10 @@ sudo apt-get install -y \
   ghostscript \
   imagemagick
 
-# PDF ↔ Word/Excel 转换（推荐）
+# PDF 转 Word/Excel（已安装）
 pip3 install pdf2docx pdfplumber --break-system-packages
 
-# Word/Excel → PDF 转换（可选，需要 LibreOffice）
+# Word/Excel 转 PDF（可选，需安装 LibreOffice）
 sudo apt-get install -y libreoffice-writer libreoffice-calc
 ```
 
@@ -446,10 +441,10 @@ sudo yum install -y \
   ghostscript \
   ImageMagick
 
-# PDF ↔ Word/Excel 转换
+# PDF 转 Word/Excel（已安装）
 pip3 install pdf2docx pdfplumber --break-system-packages
 
-# Word/Excel → PDF 转换（可选）
+# Word/Excel 转 PDF（可选）
 sudo yum install -y libreoffice-writer libreoffice-calc
 ```
 
@@ -462,10 +457,10 @@ brew install \
   ghostscript \
   imagemagick
 
-# PDF ↔ Word/Excel 转换
+# PDF 转 Word/Excel（已安装）
 pip3 install pdf2docx pdfplumber
 
-# Word/Excel → PDF 转换（可选）
+# Word/Excel 转 PDF（可选）
 brew install --cask libreoffice
 ```
 
@@ -481,10 +476,11 @@ brew install --cask libreoffice
 ## 📝 版本历史
 
 **v1.1.0** (2026-03-29)
-- ✨ 新增 PDF ↔ Word 双向转换
-- ✨ 新增 PDF ↔ Excel 双向转换
-- 📝 更新文档，添加格式转换说明
-- 🔧 新增 4 个转换脚本
+- ✨ 新增 PDF 转 Word 功能（已安装 pdf2docx）
+- ✨ 新增 PDF 转 Excel 功能（已安装 pdfplumber）
+- ✨ 新增 Word 转 PDF 功能（需安装 LibreOffice）
+- ✨ 新增 Excel 转 PDF 功能（需安装 LibreOffice）
+- 📝 更新文档，明确标注各功能的依赖状态
 
 **v1.0.0** (2026-03-29)
 - 初始版本

@@ -13,13 +13,17 @@
 MyPDF-Manager 是一个为 OpenClaw 设计的 PDF 处理技能，让你可以通过自然语言对话轻松处理 PDF 文件。
 
 **核心功能**：
-- 🔄 **PDF 转图片** - 高质量渲染，支持多种格式
-- 📝 **文字提取** - 从 PDF 提取纯文本
-- 📑 **PDF 合并** - 多文件合并为一个
-- ✂️ **PDF 拆分** - 提取指定页面
-- 🗜️ **PDF 压缩** - 减小文件体积
-- 🔍 **OCR 识别** - 识别扫描文档中的文字
-- 🖼️ **图片转 PDF** - 多图合并为 PDF
+- 🔄 **PDF 转图片** - 高质量渲染，支持多种格式 ✅
+- 📝 **文字提取** - 从 PDF 提取纯文本 ✅
+- 📑 **PDF 合并** - 多文件合并为一个 ✅
+- ✂️ **PDF 拆分** - 提取指定页面 ✅
+- 🗜️ **PDF 压缩** - 减小文件体积 ✅
+- 🔍 **OCR 识别** - 识别扫描文档中的文字 ✅
+- 🖼️ **图片转 PDF** - 多图合并为 PDF ✅
+- ✨ **PDF 转 Word** - PDF 转 docx ✅
+- ✨ **PDF 转 Excel** - 提取表格到 xlsx ✅
+- ✨ **Word 转 PDF** - docx 转 PDF ⚠️ 需安装 LibreOffice
+- ✨ **Excel 转 PDF** - xlsx 转 PDF ⚠️ 需安装 LibreOffice
 
 ## ✨ 特性
 
@@ -84,6 +88,34 @@ OCR 这个 PDF
 把这些图片转成 PDF
 合并图片为 PDF
 把多张图片合成一个 PDF
+```
+
+**PDF 转 Word**：
+```
+把这个 PDF 转成 Word
+我需要编辑这个 PDF，转成 docx
+PDF 转 Word 文档
+```
+
+**PDF 转 Excel**：
+```
+把这个 PDF 表格转成 Excel
+提取 PDF 里的表格数据
+PDF 转 xlsx
+```
+
+**Word 转 PDF**（需安装 LibreOffice）：
+```
+把 Word 转成 PDF
+docx 转 PDF
+Word 文档转 PDF
+```
+
+**Excel 转 PDF**（需安装 LibreOffice）：
+```
+把 Excel 转成 PDF
+xlsx 转 PDF
+Excel 表格转 PDF
 ```
 
 **批量处理**：
@@ -206,19 +238,78 @@ MyPDF-Manager/
 2. 生成新的 PDF
 3. 返回给你
 
+### 场景 5：PDF 转 Word 编辑
+
+**用户说**：
+```
+这个 PDF 需要编辑，转成 Word 给我
+```
+
+**AI 会**：
+1. 使用 pdf2docx 转换
+2. 保留格式、表格、图片
+3. 返回 .docx 文件
+
+### 场景 6：PDF 表格转 Excel
+
+**用户说**：
+```
+这个 PDF 里有表格，转成 Excel 我要处理数据
+```
+
+**AI 会**：
+1. 提取 PDF 中的表格
+2. 转换为 Excel 格式
+3. 返回 .xlsx 文件
+
+### 场景 7：Word 转 PDF（需安装 LibreOffice）
+
+**用户说**：
+```
+把 Word 文档转成 PDF
+```
+
+**AI 会**：
+1. 使用 LibreOffice 转换
+2. 返回 .pdf 文件
+
+**注意**：需要先安装 LibreOffice
+```bash
+sudo apt-get install -y libreoffice-writer libreoffice-calc
+```
+
+### 场景 8：Excel 转 PDF（需安装 LibreOffice）
+
+**用户说**：
+```
+把 Excel 表格转成 PDF
+```
+
+**AI 会**：
+1. 使用 LibreOffice 转换
+2. 返回 .pdf 文件
+
+**注意**：需要先安装 LibreOffice
+```bash
+sudo apt-get install -y libreoffice-writer libreoffice-calc
+```
+
 ## 🔧 底层工具（高级用户）
 
 MyPDF-Manager 基于以下开源工具：
 
-| 工具 | 功能 |
-|------|------|
-| **pdftoppm** | PDF 转图片 |
-| **pdftotext** | PDF 文字提取 |
-| **pdfunite** | PDF 合并 |
-| **pdfseparate** | PDF 拆分 |
-| **ghostscript** | PDF 压缩 |
-| **tesseract** | OCR 识别 |
-| **imagemagick** | 图片转换 |
+| 工具 | 功能 | 状态 |
+|------|------|------|
+| **pdftoppm** | PDF 转图片 | ✅ 已安装 |
+| **pdftotext** | PDF 文字提取 | ✅ 已安装 |
+| **pdfunite** | PDF 合并 | ✅ 已安装 |
+| **pdfseparate** | PDF 拆分 | ✅ 已安装 |
+| **ghostscript** | PDF 压缩 | ✅ 已安装 |
+| **tesseract** | OCR 识别 | ✅ 已安装 |
+| **imagemagick** | 图片转换 | ✅ 已安装 |
+| **pdf2docx** | PDF 转 Word | ✅ 已安装 |
+| **pdfplumber** | PDF 转 Excel | ✅ 已安装 |
+| **LibreOffice** | Word/Excel 转 PDF | ⚠️ 需安装 |
 
 ### 命令行使用
 
@@ -240,8 +331,15 @@ MyPDF-Manager 基于以下开源工具：
 ## 📋 依赖安装验证
 
 ```bash
-# 检查核心工具
+# 检查核心工具（已安装）
 which pdftoppm pdftotext pdfunite pdfseparate tesseract gs convert
+
+# 检查 PDF 转 Word/Excel（已安装）
+python3 -c "import pdf2docx; print('pdf2docx 已安装')"
+python3 -c "import pdfplumber; print('pdfplumber 已安装')"
+
+# 检查 LibreOffice（Word/Excel 转 PDF 需要）
+which libreoffice soffice || echo "LibreOffice 未安装，Word/Excel 转 PDF 功能不可用"
 
 # 查看版本
 pdftotext -v
@@ -251,6 +349,21 @@ convert --version
 
 # 检查语言包
 tesseract --list-langs
+```
+
+### 安装 LibreOffice（可选）
+
+如果需要使用 Word/Excel 转 PDF 功能：
+
+```bash
+# Ubuntu/Debian
+sudo apt-get install -y libreoffice-writer libreoffice-calc
+
+# CentOS/RHEL
+sudo yum install -y libreoffice-writer libreoffice-calc
+
+# macOS
+brew install --cask libreoffice
 ```
 
 ### 安装其他语言包
