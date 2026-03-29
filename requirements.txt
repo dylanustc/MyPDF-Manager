@@ -1,0 +1,42 @@
+# MyPDF-Manager 依赖列表
+# 安装命令: pip3 install -r requirements.txt --break-system-packages
+
+# PDF 转 Word/Excel
+pdf2docx>=0.5.0
+pdfplumber>=0.9.0
+
+# PDF 加密/水印/图片提取
+pymupdf>=1.23.0
+
+# 可选依赖（需要单独安装系统包）
+# 以下为系统包，无法通过 pip 安装，请使用系统包管理器安装：
+
+# Ubuntu/Debian:
+# sudo apt-get update
+# sudo apt-get install -y \
+#   poppler-utils \
+#   tesseract-ocr \
+#   tesseract-ocr-chi-sim \
+#   tesseract-ocr-eng \
+#   ghostscript \
+#   imagemagick \
+#   libreoffice-writer \
+#   libreoffice-calc
+
+# CentOS/RHEL:
+# sudo yum install -y \
+#   poppler-utils \
+#   tesseract \
+#   ghostscript \
+#   ImageMagick \
+#   libreoffice-writer \
+#   libreoffice-calc
+
+# macOS:
+# brew install \
+#   poppler \
+#   tesseract \
+#   tesseract-lang \
+#   ghostscript \
+#   imagemagick
+# brew install --cask libreoffice
